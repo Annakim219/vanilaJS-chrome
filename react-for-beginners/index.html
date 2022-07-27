@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    //jsx 사용하여 코드작성 ! (babel 컴파일러가 jsx ->js로 변환)
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Hello, I'm a title.
+      </h3>
+    );
+    const Btn = () => (
+      <button
+        style={{ backgroundColor: "tomato" }}
+        onClick={() => console.log("im clicked")}
+      >
+        Click me!
+      </button>
+    );
+
+    /*  const h3 = React.createElement(
+       "h3",
+       { onMouseEnter: () => console.log("mouse enter") },
+       "Hello I'm a Span."
+     ); // 리액트로 html 요소와 해당 요소의 프로퍼티, innerText를 만든다.
+     const btn = React.createElement(
+       "button",
+       {
+         onClick: () => console.log("im clicked"),
+         style: { backgroundColor: "tomato" },
+       },
+       "Click me!"
+     ); */
+
+    const Container = () => (
+      <div>
+        <Title />
+        <Btn />
+      </div>
+    );
+    /* 컴포넌트의 첫글자는 반드시 대문자, 소문자로 하면 html 요소인 줄 안다. */
+    // const div = React.createElement("div", null, [Title, Btn]);
+
+    ReactDOM.render(<Container />, root); // 리액트돔으로 html 요소를 랜더링 해준다.
+  </script>
+</html>
+
+<!-- 바닐라 JS에서는 html -> js
+리액트에서는 js에서 시작해 -> html로 끝남. -->

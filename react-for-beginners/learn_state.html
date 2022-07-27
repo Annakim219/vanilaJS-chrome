@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        /* setCounter(counter + 1); // counter state를 변경하고 리랜더해주는 modifier함수 'setCounter' */
+        setCounter((current) => current + 1); // 현재 state, 최근값을 기반으로 다음값 계산.
+      };
+      return (
+        <div>
+          <h3>Total clicks : {counter}</h3>
+          <button onClick={onClick}>Click me!</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+
+    /*     let counter = 0;
+    function countUp() {
+      counter += 1;
+      render(); // 값이 바뀔때마다 리랜더링되어야 화면, 요소기 업데이트 됨.
+    }
+
+    function render() {
+      ReactDOM.render(<App />, root); // 이벤트리스너 실행시, 리랜더링 되게 하기 위해.
+    }
+
+    const root = document.getElementById("root");
+    const App = () => (
+      <div>
+        <h3>Total clicks : {counter}</h3>
+        <button onClick={countUp}>Click me!</button>
+      </div>
+    );
+    render(); */
+  </script>
+</html>
+
+<!-- 전체가 리렌더링 되는것이 아니라, 바뀐 컴포넌트만 반영하여 리렌더링됨 ! 리액트는 아주 인터랙티브 ! -->
